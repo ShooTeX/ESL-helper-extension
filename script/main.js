@@ -731,20 +731,6 @@ class Menu {
             var openTicketsCount = openTickets.length;
             var assignedTicketsCount = assignedTickets.length;
 
-            if (openTicketsCount > 0 && GM_getValue('notification') !== false) {
-                openTickets.each(function(k, v) {
-                    var ticket = openTickets.eq(k);
-                    var ticketHref = ticket.attr('href');
-
-                    GM_notification({
-                        text: ticket.text(),
-                        title: 'New Ticket',
-                        timeout: 3000,
-                        onclick: function() { window.location = 'https://play.eslgaming.com' + ticketHref; },
-                    });
-                });
-            }
-
             if (openTicketsCount > 0) {
                 $('.userbar_caption:contains(Admin)').animate({
                     color: '#FF0000',
@@ -1050,9 +1036,9 @@ class AdminTickets {
         var squadsIgnore = GM_getValue('squadsIgnore');
         var notTheseSquads = '';
 
-        $.each(squadsIgnore.split(','), function(key, value) {
+        /*$.each(squadsIgnore.split(','), function(key, value) {
             notTheseSquads += ':not([href$="squad='+value+'"])';
-        });
+        });*/
 
         return notTheseSquads;
     }
