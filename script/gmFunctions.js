@@ -1,9 +1,9 @@
-var keyPrefix = ""; // I also use a '.' for seperation
+var keyPrefix = "helper."; // I also use a '.' for seperation
 
 GM_getValue = function(key, defValue) {
     var retval = window.localStorage.getItem(keyPrefix + key);
     if (!$(retval)) {
-        return "";
+        return defValue;
     }
     return retval;
 }
