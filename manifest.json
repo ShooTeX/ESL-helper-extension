@@ -8,8 +8,8 @@
   "content_scripts":[
     {
       "matches": ["https://play.eslgaming.com/*"],
-      "css": ["style/style.css"],
-      "js": [ "script/MooTools-Core-1.6.0.js", "script/jquery-3.2.1.min.js", "script/jquery-ui.min.js", "script/gmFunctions.js", "script/ESLminihelper.js", "script/main.js"],
+      "css": ["style/style.css", "style/select2.min.css"],
+      "js": [ "script/MooTools-Core-1.6.0.js", "script/jquery-3.2.1.min.js", "script/jquery-ui.min.js", "script/select2.min.js", "script/gmFunctions.js", "script/ESLminihelper.js", "script/main.js"],
       "run_at":"document_end"
     }
   ],
