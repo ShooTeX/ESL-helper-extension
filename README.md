@@ -1,7 +1,7 @@
 # ESL Admin helper
 ## Making admin tasks easier and faster to do.
 
-###Featues
+### Featues
 - Show ticket counter with and without admin assignment
 - Change NavNode
 - Admin Match Link in protest
