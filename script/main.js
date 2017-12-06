@@ -525,6 +525,9 @@ class AdminMatch {
 
 class Match {
     static addProtestLink() {
+        var url = window.location.href
+        var matching = /match\/(\d+)/
+        var matchId = url.match(matching)[1]
         var protestLink = location.href.substr(0, location.href.indexOf('match')) + 'match/protest/' + matchId + '/';
         $('div.esl-content span.arrowlink:contains(Admin Match)').append('<span class="arrowlink"><a href="'+ protestLink +'" target="_parent">Protest</a></span>');
     }
