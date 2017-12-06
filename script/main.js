@@ -655,8 +655,6 @@ class Menu {
 
         // add dependencies
         $('head').append('<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">');
-        $('head').append('<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />');
-        $('head').append('<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>');
         $('head').append('<script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.6.0/dist/clipboard.min.js"></script>');
 
         // quick ticket assigner :)
@@ -832,8 +830,8 @@ class Protest {
             $.each(data.feed.entry, function(key, value) {
                 $('select.defaultAnswerTexts[data-language=en]').find('optgroup#customGroup')
                     .append($("<option></option>")
-                            .data('id', value.gsx$id.$t)
-                            .data('text', originalText.replace('\n\n\n', '\n\n'+ value.gsx$text.$t +'\n'))
+                            .attr('data-id', value.gsx$id.$t)
+                            .attr('data-text', originalText.replace('\n\n\n', '\n\n'+ value.gsx$text.$t +'\n'))
                             .text(value.gsx$label.$t));
             });
 
