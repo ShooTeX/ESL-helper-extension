@@ -8,7 +8,7 @@
         }
 
         static isBracket(){
-            return (window.location.href.indexOf("/rankings/") > -1 && $(".league--header .description").text().indexOf("Cup") > -1);
+            return (window.location.href.indexOf("/rankings/") > -1 && $("title").text().indexOf("Cup") > -1);
         }
 
         static isLeagueResults(){
@@ -243,17 +243,6 @@
 
             $(MATCH).each(function() {
                 $(this).attr("href", $(this).attr("href") + "?killcache=true");
-            });
-
-            var DIVs = $(".inner-status div");
-
-            DIVs.toArray().forEach(function(entry){
-                var clone = $(entry).clone();
-                clone.children().filter("a").text("ADMIN");
-                var url = clone.children().filter("a").attr("href");
-                clone.children().filter("a").attr("href", url.replace("match", "admin_match"));
-                clone.insertAfter(entry);
-                $("<span>|</span>").insertAfter(entry);
             });
         }
 
@@ -726,7 +715,7 @@ class URL {
     }
 
     static isBracket() {
-        return (window.location.href.indexOf("/rankings/") > -1 && $(".league--header .description").text().indexOf("Cup") > -1);
+        return (window.location.href.indexOf("/rankings/") > -1 && $("title").text().indexOf("Cup") > -1);
     }
 
     static isLeagueResults() {
