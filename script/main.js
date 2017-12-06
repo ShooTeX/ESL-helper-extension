@@ -395,7 +395,7 @@ class App {
             }
         }
 
-        if (URL.isAdminTickets() || GM_getValue("refreshCounterGlobal") === true) {
+        if (URL.isAdminTickets()) {
             setTimeout(function() {
                 Menu.showTicketCounter();
                 setInterval(Menu.showTicketCounter, 30000);
@@ -703,7 +703,7 @@ class Menu {
 
 class URL {
     static isAdminTickets() {
-        return window.location.href.indexOf("/admin_tickets/") > -1;
+        return (window.location.href.indexOf("/admin_tickets/") > -1 && window.location.href.indexOf("closed=t") < 0);
     }
 
     static isAdminMatch() {
