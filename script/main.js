@@ -671,13 +671,9 @@ class Menu {
     }
 
     static addNavnodeSwitch() {
+      window.onload = function () {
         $('.userbar_caption:contains(Admin)').parent().on('click', function() {
-            var helperNavnode = GM_getValue('helperNavnode');
-
-            if (helperNavnode === undefined || helperNavnode === '') {
-                helperNavnode = '/rainbowsix/europe-pc/';
-                GM_setValue('helperNavnode', helperNavnode);
-            }
+            var helperNavnode = '/rainbowsix/europe-pc/';
 
             var MYURL=helperNavnode;
             var nodesToReplace=['support', 'admin_tickets', 'protest', 'player', 'team', 'admin_fakematches', 'admin_application'];
@@ -693,6 +689,7 @@ class Menu {
                 }
             }
         });
+      }
     }
 
     static showTicketCounter() {
