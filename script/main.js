@@ -1,35 +1,3 @@
-// ==UserScript==
-// @name         ESL Admin Helper
-// @namespace    https://play.eslgaming.com/rainbowsix/europe-pc/
-// @version      1.3.5
-// @description  ESL Rainbow Six Siege Admin Helper
-// @author       Deadshot & ShooTeX
-// @updateURL    https://gist.githubusercontent.com/ShooTeX/753c349c0adc0a222f44b963da3f1494/raw
-// @downloadURL  https://gist.githubusercontent.com/ShooTeX/753c349c0adc0a222f44b963da3f1494/raw
-// @require      https://greasyfork.org/scripts/622-super-gm-setvalue-and-gm-getvalue-js/code/Super_GM_setValue_and_GM_getValuejs.js?version=1786
-// @match        https://play.eslgaming.com/*
-// @grant        GM_notification
-// @grant        window.focus
-// @grant        GM_SuperValue
-// @grant        GM_setValue
-// @grant        GM_getValue
-// @copyright  	 Steven "Deadshot" Klar
-// ==/UserScript==
-/*
-+++ Featues +++
-- Show ticket counter with and without admin assignment
-- Notification when there are tickets without admin assignment
-- Configure features
-- Change NavNode
-- Admin Match Link in protest
-- Easy "Go back to Match"-link in Admin Match page
-- Add generic protest link to admin menu in Matches
-- Admin quick list in support tickets for easy move
-- Fast forward to oldest unassigned ticket
-- Show Match chatlog/logfile in Match instead of page reload
-- Quick Protest timer, never forget a cup protest again
-*/
-
 (function() {
     'use strict';
 
