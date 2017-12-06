@@ -639,8 +639,8 @@ class Menu {
     }
 
     static addNavnodeSwitch() {
-      window.onload = function () {
         $('.userbar_caption:contains(Admin)').parent().on('click', function() {
+          alert("test")
             var helperNavnode = '/rainbowsix/europe-pc/';
 
             var MYURL=helperNavnode;
@@ -657,7 +657,6 @@ class Menu {
                 }
             }
         });
-      }
     }
 
     static showTicketCounter() {
