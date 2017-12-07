@@ -266,6 +266,29 @@ class App {
             Menu.init();
         }, 1000);
 
+        if (URL.isContestants) {
+          if($("title").text().indexOf("Go4R6") > -1){
+            let seedScript = "(function(){alert(`no script available`)}())"
+              if($("title").text().indexOf("Go4R6") > -1 && $("title").text().indexOf("(PC)") > -1 && $("title").text().indexOf("Europe") > -1){
+                seedScript = '(function(){var%20t,e="go4r6_pc_eu",n=new%20Array;contestants_to_send=new%20Array,jQuery("form%20table:first%20tr").each(function(){var%20t=parseInt(jQuery(this).find("td").eq(2).text());isNaN(parseInt(t))||contestants_to_send.push(t)}),jQuery.ajax({type:"POST",crossDomain:!0,data:{contestants:contestants_to_send.join(",")},url:"https://toolbox.tet.io/go4/"+e+"/seed",success:function(e){t=e;var%20r=0;jQuery("form%20table:first%20tr").each(function(){var%20e=parseInt(jQuery(this).find("td").eq(2).text()),a=t[e];!isNaN(a)&&a>0&&(n[r]=e,r++)}),n.sort(function(t,n){return%20e[n]-e[t]}),jQuery("form%20table:first%20tr").each(function(){var%20t=parseInt(jQuery(this).find("td").eq(2).text()),e=n.indexOf(t),r=jQuery(this).find("td%20input:text").first();jQuery(r).val(!isNaN(e)&&e>=0?e+1:0)})}})})();'
+              }
+
+              if($("title").text().indexOf("Go4R6") > -1 && $("title").text().indexOf("(PS4)") > -1 && $("title").text().indexOf("Europe") > -1){
+                seedScript = '(function(){var%20t,e="go4r6_ps4_eu",n=new%20Array;contestants_to_send=new%20Array,jQuery("form%20table:first%20tr").each(function(){var%20t=parseInt(jQuery(this).find("td").eq(2).text());isNaN(parseInt(t))||contestants_to_send.push(t)}),jQuery.ajax({type:"POST",crossDomain:!0,data:{contestants:contestants_to_send.join(",")},url:"https://toolbox.tet.io/go4/"+e+"/seed",success:function(e){t=e;var%20r=0;jQuery("form%20table:first%20tr").each(function(){var%20e=parseInt(jQuery(this).find("td").eq(2).text()),a=t[e];!isNaN(a)&&a>0&&(n[r]=e,r++)}),n.sort(function(t,n){return%20e[n]-e[t]}),jQuery("form%20table:first%20tr").each(function(){var%20t=parseInt(jQuery(this).find("td").eq(2).text()),e=n.indexOf(t),r=jQuery(this).find("td%20input:text").first();jQuery(r).val(!isNaN(e)&&e>=0?e+1:0)})}})})();'
+              }
+              if($("title").text().indexOf("Go4R6") > -1 && $("title").text().indexOf("(One)") > -1 && $("title").text().indexOf("Europe") > -1){
+                seedScript = '(function(){var%20t,e="go4r6_one_eu",n=new%20Array;contestants_to_send=new%20Array,jQuery("form%20table:first%20tr").each(function(){var%20t=parseInt(jQuery(this).find("td").eq(2).text());isNaN(parseInt(t))||contestants_to_send.push(t)}),jQuery.ajax({type:"POST",crossDomain:!0,data:{contestants:contestants_to_send.join(",")},url:"https://toolbox.tet.io/go4/"+e+"/seed",success:function(e){t=e;var%20r=0;jQuery("form%20table:first%20tr").each(function(){var%20e=parseInt(jQuery(this).find("td").eq(2).text()),a=t[e];!isNaN(a)&&a>0&&(n[r]=e,r++)}),n.sort(function(t,n){return%20e[n]-e[t]}),jQuery("form%20table:first%20tr").each(function(){var%20t=parseInt(jQuery(this).find("td").eq(2).text()),e=n.indexOf(t),r=jQuery(this).find("td%20input:text").first();jQuery(r).val(!isNaN(e)&&e>=0?e+1:0)})}})})();'
+              }
+              if($("title").text().indexOf("Go4R6") > -1 && $("title").text().indexOf("(One)") > -1 && $("title").text().indexOf("UK") > -1){
+                seedScript = '(function(){var%20t,e="go4r6_one_uk",n=new%20Array;contestants_to_send=new%20Array,jQuery("form%20table:first%20tr").each(function(){var%20t=parseInt(jQuery(this).find("td").eq(2).text());isNaN(parseInt(t))||contestants_to_send.push(t)}),jQuery.ajax({type:"POST",crossDomain:!0,data:{contestants:contestants_to_send.join(",")},url:"https://toolbox.tet.io/go4/"+e+"/seed",success:function(e){t=e;var%20r=0;jQuery("form%20table:first%20tr").each(function(){var%20e=parseInt(jQuery(this).find("td").eq(2).text()),a=t[e];!isNaN(a)&&a>0&&(n[r]=e,r++)}),n.sort(function(t,n){return%20e[n]-e[t]}),jQuery("form%20table:first%20tr").each(function(){var%20t=parseInt(jQuery(this).find("td").eq(2).text()),e=n.indexOf(t),r=jQuery(this).find("td%20input:text").first();jQuery(r).val(!isNaN(e)&&e>=0?e+1:0)})}})})();'
+              }
+              if($("title").text().indexOf("Go4R6") > -1 && $("title").text().indexOf("(PS4)") > -1 && $("title").text().indexOf("UK") > -1){
+                seedScript = '(function(){var%20t,e="go4r6_ps4_uk",n=new%20Array;contestants_to_send=new%20Array,jQuery("form%20table:first%20tr").each(function(){var%20t=parseInt(jQuery(this).find("td").eq(2).text());isNaN(parseInt(t))||contestants_to_send.push(t)}),jQuery.ajax({type:"POST",crossDomain:!0,data:{contestants:contestants_to_send.join(",")},url:"https://toolbox.tet.io/go4/"+e+"/seed",success:function(e){t=e;var%20r=0;jQuery("form%20table:first%20tr").each(function(){var%20e=parseInt(jQuery(this).find("td").eq(2).text()),a=t[e];!isNaN(a)&&a>0&&(n[r]=e,r++)}),n.sort(function(t,n){return%20e[n]-e[t]}),jQuery("form%20table:first%20tr").each(function(){var%20t=parseInt(jQuery(this).find("td").eq(2).text()),e=n.indexOf(t),r=jQuery(this).find("td%20input:text").first();jQuery(r).val(!isNaN(e)&&e>=0?e+1:0)})}})})();'
+              }
+            $('form input[value*="Seed from File"]').after('&nbsp;&nbsp;&nbsp;<input type="button" value="Seed from toolbox" onClick="' + seedScript + '">')
+          }
+        }
+
         if (URL.isProtest()) {
             Protest.addAdminMatchLink();
             Protest.addSentences();
@@ -728,6 +751,10 @@ class URL {
 
     static isSupport() {
         return window.location.href.indexOf("/support/") > -1;
+    }
+
+    static isContestants() {
+      return window.loaction.href.indexOf("/admin_contestants/") > -1;
     }
 }
 
