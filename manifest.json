@@ -21,6 +21,8 @@
   },
   "permissions": [
     "activeTab",
-    "storage"
+    "tabs",
+    "storage",
+    "notifications"
   ]
 }
