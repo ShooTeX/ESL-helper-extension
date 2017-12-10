@@ -30,3 +30,7 @@ document.getElementById('switchButton').onclick = function(){
   document.getElementById('switchButton').checked = active
   chrome.tabs.reload();
 }
+
+document.getElementById('timerButton').onclick = function(){
+  chrome.extension.sendMessage({ duration: document.getElementById('time').value, msg: "startTimer" });
+}
