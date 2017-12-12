@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "ESL Helper",
-  "description": "An ESL Admin helper",
+  "name": "ESL Admin Helper",
+  "description": "Helps you with your admin tasks.",
   "version": "0",
 
   "icons": {
@@ -25,7 +25,6 @@
   ],
 
   "browser_action": {
-    "default_icon": "img/icon.png",
     "default_popup": "popup.html",
     "default_title": "Settings"
   },
