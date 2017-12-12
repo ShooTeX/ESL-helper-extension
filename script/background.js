@@ -48,6 +48,7 @@ function addNotification(title,duration,id){
     type: 'basic',
     iconUrl: 'img/icon128.png',
     title: title,
+    requireInteraction: true,
     message: duration + " minutes are over."
   })
 }

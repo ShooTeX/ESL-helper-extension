@@ -37,7 +37,9 @@ document.getElementById('timerButton').onclick = function(){
 
 $(document).ready(function(){
    $('body').on('click', 'a', function(){
+     if($(this).attr('href') != null){
      chrome.tabs.create({url: $(this).attr('href')});
      return false;
+      }
    });
 });
