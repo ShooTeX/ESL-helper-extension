@@ -1,4 +1,25 @@
 let active
+
+function setCaretPosition(elemId, caretPos) {
+    var elem = elemId;
+
+    if(elem != null) {
+        if(elem.createTextRange) {
+            var range = elem.createTextRange();
+            range.move('character', caretPos);
+            range.select();
+        }
+        else {
+            if(elem.selectionStart) {
+                elem.focus();
+                elem.setSelectionRange(caretPos, caretPos);
+            }
+            else
+                elem.focus();
+        }
+    }
+}
+
 chrome.storage.local.get(['active'], function(data){
   if(data.active){
     (function() {
@@ -303,23 +324,28 @@ chrome.storage.local.get(['active'], function(data){
                         $('.esl-content > div > table').eq(1).html(ticketTable.html());
                     });
                 }, 30000);
-                let textbox = document.getElementsByName('body')[0]
-                let selectionText = textbox.value.substr(textbox.selectionStart, textbox.selectionEnd)
 
-                var map = {};
-                onkeydown = onkeyup = function(e){
-                    e = e || event;
-                    map[e.keyCode] = e.type == 'keydown';
-                    if(map[17] && map[66]){
-                      let textbox = document.getElementsByName('body')[0]
-                      let textBeforeSelection = textbox.value.substr(0, textbox.selectionStart)
-                      let textAfterSelection = textbox.value.substr(textbox.selectionEnd, textbox.value.length)
-                      let selectionText = textbox.value.substr(textbox.selectionStart, textbox.selectionEnd)
-                      alert(selectionText)
-                      textbox.value = textBeforeSelection + "b[]b" + textAfterSelection
-                    }
+                document.onkeydown = function(){
+                  var evtobj = window.event? event : e
+                  if(evtobj.ctrlKey && evtobj.keyCode == 66){
+                    let textbox = document.getElementsByName('body')[0]
+                    let textBeforeSelection = textbox.value.substr(0, textbox.selectionStart)
+                    let textAfterSelection = textbox.value.substr(textbox.selectionEnd, textbox.value.length)
+                    let selectionText = textbox.value.substr(textbox.selectionStart, Number(textbox.selectionEnd - textbox.selectionStart))
+                    let curserPosition = Number(textbox.selectionEnd + 4)
+                    textbox.value = textBeforeSelection + "b[" + selectionText + "]b" + textAfterSelection
+                    setCaretPosition(textbox, curserPosition)
+                  }
+                  if(evtobj.ctrlKey && evtobj.keyCode == 81){
+                    let textbox = document.getElementsByName('body')[0]
+                    let textBeforeSelection = textbox.value.substr(0, textbox.selectionStart)
+                    let textAfterSelection = textbox.value.substr(textbox.selectionEnd, textbox.value.length)
+                    let selectionText = textbox.value.substr(textbox.selectionStart, Number(textbox.selectionEnd - textbox.selectionStart))
+                    let curserPosition = Number(textbox.selectionEnd + 12)
+                    textbox.value = textBeforeSelection + "quote[" + selectionText + "]quote" + textAfterSelection
+                    setCaretPosition(textbox, curserPosition)
+                  }
                 }
-                //
             }
 
             if (URL.isSupport()) {
@@ -372,6 +398,28 @@ chrome.storage.local.get(['active'], function(data){
                     } else {
                         console.log('Platform for Go4 Monthly finals not found');
                     }
+                }
+
+                document.onkeydown = function(){
+                  var evtobj = window.event? event : e
+                  if(evtobj.ctrlKey && evtobj.keyCode == 66){
+                    let textbox = document.getElementsByName('body')[0]
+                    let textBeforeSelection = textbox.value.substr(0, textbox.selectionStart)
+                    let textAfterSelection = textbox.value.substr(textbox.selectionEnd, textbox.value.length)
+                    let selectionText = textbox.value.substr(textbox.selectionStart, Number(textbox.selectionEnd - textbox.selectionStart))
+                    let curserPosition = Number(textbox.selectionEnd + 4)
+                    textbox.value = textBeforeSelection + "b[" + selectionText + "]b" + textAfterSelection
+                    setCaretPosition(textbox, curserPosition)
+                  }
+                  if(evtobj.ctrlKey && evtobj.keyCode == 81){
+                    let textbox = document.getElementsByName('body')[0]
+                    let textBeforeSelection = textbox.value.substr(0, textbox.selectionStart)
+                    let textAfterSelection = textbox.value.substr(textbox.selectionEnd, textbox.value.length)
+                    let selectionText = textbox.value.substr(textbox.selectionStart, Number(textbox.selectionEnd - textbox.selectionStart))
+                    let curserPosition = Number(textbox.selectionEnd + 12)
+                    textbox.value = textBeforeSelection + "quote[" + selectionText + "]quote" + textAfterSelection
+                    setCaretPosition(textbox, curserPosition)
+                  }
                 }
             }
 

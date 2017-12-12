@@ -71,15 +71,9 @@ function jumpToTab(id){
         }
         else{
           chrome.tabs.create({ url: "https://play.eslgaming.com" + navNode + "protest/" + id })
+          chrome.notifications.clear(id)
         }
-        // for (var i in tabs){
-        //   if(tabs[i].url.match(matching) && tabs[i].url.match(matching)[1] == id){
-        //     chrome.tabs.update(tabs[i].id, {highlighted: true})
-        //     chrome.notifications.clear(id)
-        //   }
-        //}
       })
-      //chrome.tabs.create({ url: url })
 }
 
 chrome.notifications.onClicked.addListener(function(data) {
@@ -94,6 +88,8 @@ chrome.extension.onMessage.addListener(
         }
     }
 );
+
+//Clear storage
 /*chrome.storage.local.clear(function() {
     var error = chrome.runtime.lastError;
     if (error) {
