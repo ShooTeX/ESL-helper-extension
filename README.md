@@ -12,3 +12,4 @@
 - Show Match chatlog/logfile in Match instead of page reload
 - Quick Protest timer, never forget a cup protest again
 - Go4 'Seed from Toolbox' button
+- Key binds to quickly bold or quote
