@@ -34,3 +34,10 @@ document.getElementById('switchButton').onclick = function(){
 document.getElementById('timerButton').onclick = function(){
   chrome.extension.sendMessage({ duration: document.getElementById('time').value, msg: "startTimer" });
 }
+
+$(document).ready(function(){
+   $('body').on('click', 'a', function(){
+     chrome.tabs.create({url: $(this).attr('href')});
+     return false;
+   });
+});
