@@ -303,69 +303,6 @@ chrome.storage.local.get(['active'], function(data){
                         $('.esl-content > div > table').eq(1).html(ticketTable.html());
                     });
                 }, 30000);
-
-                var snd = new Audio("../audio/alert.ogg")
-
-                var linebreak = document.createElement("br");
-
-                var title = document.createElement("h2");
-                title.innerHTML = "Set a timer";
-                title.style = "color: black";
-
-                var box = document.createElement("Div");
-                box.style = "z-index: 9999;background: white;border: none;border-top-left-radius: 5px;border-bottom-left-radius: 5px;box-sizing: content-box;color: rgb(255, 255, 255);overflow: hidden;padding: 0px 40px 40px 40px;position: fixed;text-align: center;text-overflow: ellipsis;width: 186px;top: 240px;left: 146px;";
-
-                var input = document.createElement("input");
-                input.className = "form-control";
-                input.id = "durationInput";
-                input.placeholder = "Time in minutes";
-                input.style= "color:black;margin-left:0px;width:100%;";
-
-                var button = document.createElement("Button");
-                button.innerHTML = "Add Timer";
-                button.className = "c-button c-button--big c-button--block c-button--primary";
-                button.id = "timerButton";
-                button.style = "z-index: 9999;";
-
-                box.appendChild(title);
-                box.appendChild(input);
-                box.appendChild(linebreak);
-                box.appendChild(button);
-                document.body.appendChild(box);
-
-                document.getElementById ("timerButton").addEventListener (
-                    "click", addTimer, false
-                );
-
-                function addTimer() {
-                    var duration = document.getElementById("durationInput").value * 60000;
-                    var headers = document.getElementsByClassName("WindowHeader");
-                    var title = headers[0].innerHTML;
-
-                    if (!Notification) {
-                        alert('Desktop notifications not available in your browser.');
-                        return;
-                    }
-                    setTimeout(function notify(){
-                        if (Notification.permission !== "granted")
-                            Notification.requestPermission();
-                        else {
-
-                            snd.play();
-
-                            var notification = new Notification(title, {
-                                icon: 'https://www.eslgaming.com/sites/all/themes/stability/stability_sub/logo.png',
-                                body: duration/60000 + " minutes are over",
-                            });
-
-                            notification.onclick = function () {
-                                window.focus();
-                                this.close();
-                            };
-
-                        }
-                    }, duration);
-                };
             }
 
             if (URL.isSupport()) {
