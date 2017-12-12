@@ -2,3 +2,8 @@ body {
   width: 250px;
   height: 250px;
 }
+
+.inline-icon {
+  vertical-align: text-bottom;
+  font-size: 18px !important
+}

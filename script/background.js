@@ -1,5 +1,7 @@
 let active,timer
 
+let navNode = '/rainbowsix/europe-pc/'
+
 let notifySound = new Audio()
 notifySound.src = "audio/alert.ogg"
 
@@ -21,22 +23,28 @@ function startTimer(duration){
   },
   function(tabs) {
     let tab = tabs[0]
-    let currentURL = tab.url
+    let url = tab.url
     let currentTitle = tab.title
-    let currentId = tab.id
+    let matching = /protest\/(\d+)/
+    let protestId
+    if(url.match(matching)){
+      protestId = url.match(matching)[1]
+    }
+    else{
+      alert("You're not in a protest. Timer is not set!")
+    }
     timer = setTimeout(function(){
-      addNotification(currentTitle,duration,currentId,currentURL);
-
+      addNotification(currentTitle,duration,protestId);
     }, time)
   });
 }
 
-function addNotification(title,duration,id,url){
+function addNotification(title,duration,id){
   notifySound.play()
 
   let notId = id.toString();
 
-  chrome.notifications.create(notId + "|" + url, {
+  chrome.notifications.create(notId, {
     type: 'basic',
     iconUrl: 'img/icon128.png',
     title: title,
@@ -44,30 +52,39 @@ function addNotification(title,duration,id,url){
   })
 }
 
-function jumpToTab(id,url){
+function jumpToTab(id){
       let tabFound = false
       chrome.tabs.query({}, function(tabs){
-        for (var i in tabs){
-          if(tabs[i].id === id){
-            tabFound = true
+        let matching = /protest\/(\d+)/
+        let checkProtestId
+        let tabId
+        let tabFound = tabs.find(function(i){
+          if(i.url.match(matching) && i.url.match(matching)[1] == id){
+            tabId = i.id
           }
+
+          return i.url.match(matching) && i.url.match(matching)[1] == id
+        })
+        if(tabFound){
+          chrome.tabs.update(tabId, {highlighted: true})
+          chrome.notifications.clear(id)
         }
+        else{
+          chrome.tabs.create({ url: "https://play.eslgaming.com" + navNode + "protest/" + id })
+        }
+        // for (var i in tabs){
+        //   if(tabs[i].url.match(matching) && tabs[i].url.match(matching)[1] == id){
+        //     chrome.tabs.update(tabs[i].id, {highlighted: true})
+        //     chrome.notifications.clear(id)
+        //   }
+        //}
       })
-      if(tabFound = true){
-        chrome.tabs.update(id, {highlighted: true})
-        chrome.notifications.clear(id + "|" + url)
-        tabFound = false;
-      }
-      else{
-        chrome.tabs.create({ url: url })
-      }
+      //chrome.tabs.create({ url: url })
 }
 
 chrome.notifications.onClicked.addListener(function(data) {
-  var allData = data.split('|')
-  var id = Number(allData[0])
-  var url = allData[1]
-  jumpToTab(id,url)
+  var id = data
+  jumpToTab(id)
 });
 
 chrome.extension.onMessage.addListener(
