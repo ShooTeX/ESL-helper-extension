@@ -12,7 +12,7 @@
   },
 
   "background": {
-    "scripts": ["script/background.js"]
+    "scripts": ["script/jquery-3.2.1.min.js", "script/background.js"]
   },
 
   "content_scripts":[
