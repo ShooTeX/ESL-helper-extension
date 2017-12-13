@@ -15,12 +15,6 @@ function checkURL(){
   }
   else{
     document.getElementById('switchButton').disabled = true;
-
-    //should be in background.js
-    /*chrome.browserAction.setIcon({
-      path : '../img/icon-off-38.png',
-      tabId: currentID
-    });*/
   }
 }
 
@@ -37,8 +31,8 @@ document.getElementById('timerButton').onclick = function(){
 
 $(document).ready(function(){
    $('body').on('click', 'a', function(){
-     if($(this).attr('href') != null){
-     chrome.tabs.create({url: $(this).attr('href')});
+     if($(this).attr('link') != null){
+     chrome.tabs.create({url: $(this).attr('link')});
      return false;
       }
    });

@@ -1,5 +1,9 @@
 let active,timer
 
+let protests =[{id: 0, title: "", duration: 0}]
+
+console.log(protests)
+
 let navNode = '/rainbowsix/europe-pc/'
 
 let notifySound = new Audio()
@@ -32,10 +36,19 @@ function startTimer(duration){
     }
     else{
       alert("You're not in a protest. Timer is not set!")
+      return
     }
     timer = setTimeout(function(){
+      $(this).data(protestId, timer)
       addNotification(currentTitle,duration,protestId);
+      // for (var i in protests){
+      //   if(protests[i].id == protestId){
+      //     protests.splice(i, 1)
+      //   }
+      // }
     }, time)
+    // protests.push({"id": protestId, "title": currentTitle, "duration": time})
+    // clearTimeout($(this).data(protestId))
   });
 }
 

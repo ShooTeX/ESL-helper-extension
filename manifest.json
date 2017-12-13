@@ -3,7 +3,7 @@
 
   "name": "ESL Admin Helper",
   "description": "Helps you with your admin tasks.",
-  "version": "0.1.1",
+  "version": "0.1.2",
 
   "icons": {
     "16": "img/icon16.png",
@@ -12,7 +12,7 @@
   },
 
   "background": {
-    "scripts": ["script/background.js"]
+    "scripts": ["script/jquery-3.2.1.min.js", "script/background.js"]
   },
 
   "content_scripts":[
