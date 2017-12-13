@@ -16,7 +16,7 @@ chrome.storage.local.get('active', function (data) {
 })
 
 function startTimer(duration){
-  let time = duration*6000
+  let time = duration*60000
   chrome.tabs.query({
   active: true,
   currentWindow: true
