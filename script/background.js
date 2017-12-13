@@ -41,14 +41,14 @@ function startTimer(duration){
     timer = setTimeout(function(){
       $(this).data(protestId, timer)
       addNotification(currentTitle,duration,protestId);
-      for (var i in protests){
-        if(protests[i].id == protestId){
-          protests.splice(i, 1)
-        }
-      }
+      // for (var i in protests){
+      //   if(protests[i].id == protestId){
+      //     protests.splice(i, 1)
+      //   }
+      // }
     }, time)
-    protests.push({"id": protestId, "title": currentTitle, "duration": time})
-      // clearTimeout($(this).data(protestId))
+    // protests.push({"id": protestId, "title": currentTitle, "duration": time})
+    // clearTimeout($(this).data(protestId))
   });
 }
 
