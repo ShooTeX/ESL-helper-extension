@@ -22,6 +22,16 @@ function setCaretPosition(elemId, caretPos) {
 
 chrome.storage.local.get(['active'], function(data){
   if(data.active){
+
+    //get Settings
+    let notOnResponse
+
+    chrome.storage.sync.get({
+       notOnResponse: false
+    }, function(items) {
+      notOnResponse = items.notOnResponse;
+    });
+
     (function() {
         'use strict';
 

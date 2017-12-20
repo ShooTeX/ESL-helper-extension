@@ -52,17 +52,24 @@ function startTimer(duration){
   });
 }
 
-function addNotification(title,duration,id){
+function addNotification(title,duration,id,message){
   notifySound.play()
 
   let notId = id.toString();
+  let setMessage
+  if (message == null){
+    setMessage = duration + " minutes are over."
+  }
+  else {
+    setMessage = message
+  }
 
   chrome.notifications.create(notId, {
     type: 'basic',
     iconUrl: 'img/icon128.png',
     title: title,
     requireInteraction: true,
-    message: duration + " minutes are over."
+    message: setMessage
   })
 }
 
@@ -99,6 +106,9 @@ chrome.extension.onMessage.addListener(
     function(request, sender, sendResponse){
         if(request.msg == "startTimer"){
           startTimer(request.duration);
+        }
+        if(request.msg == "notify"){
+
         }
     }
 );
