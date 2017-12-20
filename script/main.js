@@ -328,6 +328,7 @@ chrome.storage.local.get(['active'], function(data){
                         $('.esl-content > div > table').eq(1).html(ticketTable.html());
                         if($('.esl-content tr').length > currentAnswers){
                           pageTitleNotification.on("New Message!")
+                          currentAnswers = $('.esl-content tr').length
                         }
                     });
                 }, 15000);
