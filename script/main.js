@@ -317,6 +317,10 @@ chrome.storage.local.get(['active'], function(data){
                 Protest.addAdminMatchLink();
                 Protest.addSentences();
 
+                pageTitleNotification.on("New Message!")
+
+                document.onclick = pageTitleNotification.off
+
                 setInterval(function() {
                     $.get('', function(data) {
                         var ticketTable = $(data).find('.esl-content > div > table').eq(1);
