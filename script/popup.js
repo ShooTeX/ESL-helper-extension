@@ -1,5 +1,7 @@
 let active, currentURL, currentID
 
+document.getElementById('notOnResponse').checked = checked
+
 chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
   currentURL = tabs[0].url
   currentID = tabs[0].id
@@ -33,10 +35,12 @@ document.getElementById('quickOptBtn').onclick = function(){
 }
 
 document.getElementById('notOnResponse').onclick = function(){
+  var status = document.getElementById('notOnResponse').checked
+
   chrome.storage.sync.set({
-    notOnResponse: document.getElementById('notOnResponse').checked
+    notOnResponse: status
   }, function() {
-    console.log("saved")
+    console.log(status)
   });
 }
 
@@ -49,7 +53,7 @@ $(document).ready(function(){
    });
 
    chrome.storage.sync.get({
-     // notOnResponse: false
+      notOnResponse: false
    }, function(items) {
      console.log(items.notOnResponse)
      document.getElementById('notOnResponse').checked = items.notOnReponse;
