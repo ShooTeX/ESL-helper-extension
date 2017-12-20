@@ -316,18 +316,21 @@ chrome.storage.local.get(['active'], function(data){
             if (URL.isProtest()) {
                 Protest.addAdminMatchLink();
                 Protest.addSentences();
-
-                pageTitleNotification.on("New Message!")
+                let currentAnswers = $('.esl-content tr').length
 
                 document.onclick = pageTitleNotification.off
+                console.log($('.esl-content tr').length)
 
                 setInterval(function() {
                     $.get('', function(data) {
                         var ticketTable = $(data).find('.esl-content > div > table').eq(1);
 
                         $('.esl-content > div > table').eq(1).html(ticketTable.html());
+                        if($('.esl-content tr').length > currentAnswers){
+                          pageTitleNotification.on("New Message!")
+                        }
                     });
-                }, 30000);
+                }, 15000);
 
                 document.onkeydown = function(){
                   var evtobj = window.event? event : e
