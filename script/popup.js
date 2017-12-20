@@ -26,7 +26,7 @@ document.getElementById('switchButton').onclick = function(){
 }
 
 document.getElementById('timerButton').onclick = function(){
-  chrome.extension.sendMessage({ duration: document.getElementById('time').value, msg: "startTimer" });
+  chrome.extension.sendMessage({ comment: document.getElementById('comment').value, duration: document.getElementById('time').value, msg: "startTimer" });
 }
 
 document.getElementById('quickOptBtn').onclick = function(){
