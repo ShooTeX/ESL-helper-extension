@@ -329,7 +329,6 @@ chrome.storage.local.get(['active'], function(data){
                 let currentAnswers = $('.esl-content tr').length
 
                 document.onclick = pageTitleNotification.off
-                console.log($('.esl-content tr').length)
 
                 setInterval(function() {
                     $.get('', function(data) {
@@ -338,6 +337,12 @@ chrome.storage.local.get(['active'], function(data){
                         $('.esl-content > div > table').eq(1).html(ticketTable.html());
                         if($('.esl-content tr').length > currentAnswers){
                           pageTitleNotification.on("New Message!")
+                          if(notOnResponse){
+                            let matching = /protest\/(\d+)/
+                            let protestId = document.URL.match(matching)[1]
+
+                            chrome.extension.sendMessage({ title: document.title, id: protestId, message: "New Message!", msg: "notify" })
+                          }
                           currentAnswers = $('.esl-content tr').length
                         }
                     });

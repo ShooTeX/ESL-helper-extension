@@ -115,7 +115,7 @@ chrome.extension.onMessage.addListener(
           startTimer(request.duration, request.comment);
         }
         if(request.msg == "notify"){
-
+          addNotification(request.title,0,request.id,request.message)
         }
     }
 );
