@@ -29,11 +29,29 @@ document.getElementById('timerButton').onclick = function(){
   chrome.extension.sendMessage({ duration: document.getElementById('time').value, msg: "startTimer" });
 }
 
+document.getElementById('quickOptBtn').onclick = function(){
+}
+
+document.getElementById('notOnResponse').onclick = function(){
+  chrome.storage.sync.set({
+    notOnResponse: document.getElementById('notOnResponse').checked
+  }, function() {
+    console.log("saved")
+  });
+}
+
 $(document).ready(function(){
    $('body').on('click', 'a', function(){
      if($(this).attr('link') != null){
      chrome.tabs.create({url: $(this).attr('link')});
      return false;
       }
+   });
+
+   chrome.storage.sync.get({
+     // notOnResponse: false
+   }, function(items) {
+     console.log(items.notOnResponse)
+     document.getElementById('notOnResponse').checked = items.notOnReponse;
    });
 });
