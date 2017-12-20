@@ -19,7 +19,7 @@ chrome.storage.local.get('active', function (data) {
   }
 })
 
-function startTimer(duration){
+function startTimer(duration, comment){
   let time = duration*60000
   chrome.tabs.query({
   active: true,
@@ -28,7 +28,14 @@ function startTimer(duration){
   function(tabs) {
     let tab = tabs[0]
     let url = tab.url
-    let currentTitle = tab.title
+    let currentTitle
+    if(comment == ''){
+      console.log(comment)
+      currentTitle = tab.title
+    }
+    else{
+      currentTitle = comment
+    }
     let matching = /protest\/(\d+)/
     let protestId
     if(url.match(matching)){
@@ -98,7 +105,7 @@ chrome.notifications.onClicked.addListener(function(data) {
 chrome.extension.onMessage.addListener(
     function(request, sender, sendResponse){
         if(request.msg == "startTimer"){
-          startTimer(request.duration);
+          startTimer(request.duration, request.comment);
         }
     }
 );
