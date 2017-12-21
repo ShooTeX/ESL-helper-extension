@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://gitlab.com/ShooTeX/ESL-helper-extension/issues"
   },
-  "homepage": "https://gitlab.com/ShooTeX/ESL-helper-extension#README"
+  "homepage": "https://gitlab.com/ShooTeX/ESL-helper-extension#README",
+  "dependencies": {
+    "envy": "^1.0.0"
+  }
 }
