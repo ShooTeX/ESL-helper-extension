@@ -15,6 +15,8 @@ function checkURL(){
   }
   else{
     document.getElementById('switchButton').disabled = true;
+    document.getElementById('timerButton').setAttribute("disabled", "");
+    document.getElementById('notOnResponse').disabled = true;
   }
 }
 

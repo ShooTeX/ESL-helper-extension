@@ -326,6 +326,7 @@ chrome.storage.local.get(['active'], function(data){
             if (URL.isProtest()) {
                 Protest.addAdminMatchLink();
                 Protest.addSentences();
+                Protest.addWarnings();
                 let currentAnswers = $('.esl-content tr').length
 
                 document.onclick = pageTitleNotification.off
@@ -815,6 +816,21 @@ chrome.storage.local.get(['active'], function(data){
             var link = match.find('a').attr('href');
 
             match.append(' | <a href="'+ link.replace('match', 'admin_match') +'">Admin Match</a>');
+        }
+
+        static addWarnings() {
+          var creator = $('td:contains(Creator) + td')
+          var against = $('td:contains(Protest against) + td')
+
+          let teamlink1 = $('td:contains(Creator) + td > a').eq(1).attr('href')
+          let teamlink2 = $('td:contains(Protest against) + td > a').eq(0).attr('href')
+          let matching = /team\/(\d+)/
+          let team1 = teamlink1.match(matching)[1]
+          let team2 = teamlink2.match(matching)[1]
+          console.log(team1)
+
+          creator.append(team1)
+          against.append(" " + team2)
         }
 
         static addSentences() {
