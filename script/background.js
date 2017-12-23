@@ -30,7 +30,6 @@ function startTimer(duration, comment){
     let url = tab.url
     let currentTitle
     if(comment == ''){
-      console.log(comment)
       currentTitle = tab.title
     }
     else{
@@ -96,6 +95,7 @@ function jumpToTab(id){
         if(tabFound){
           chrome.tabs.update(tabId, {highlighted: true})
           chrome.notifications.clear(id)
+          console.log(tabId)
         }
         else{
           chrome.tabs.create({ url: "https://play.eslgaming.com" + navNode + "protest/" + id })
