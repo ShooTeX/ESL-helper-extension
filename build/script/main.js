@@ -819,15 +819,18 @@ chrome.storage.local.get(['active'], function(data){
         }
 
         static addWarnings() {
+          //get object to append to
           var creator = $('td:contains(Creator) + td')
           var against = $('td:contains(Protest against) + td')
 
+          //get team ids
           let teamlink1 = $('td:contains(Creator) + td > a').eq(1).attr('href')
           let teamlink2 = $('td:contains(Protest against) + td > a').eq(0).attr('href')
           let matching = /team\/(\d+)/
           let team1 = teamlink1.match(matching)[1]
           let team2 = teamlink2.match(matching)[1]
-          console.log(team1)
+
+          //check for warnings
 
           creator.append(team1)
           against.append(" " + team2)
