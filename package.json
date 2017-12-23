@@ -1,0 +1,22 @@
+{
+  "name": "esl-helper-extension",
+  "version": "0.2.0",
+  "description": "Making admin tasks easier and faster to do.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/ShooTeX/ESL-helper-extension.git"
+  },
+  "author": "ShooTeX",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/ShooTeX/ESL-helper-extension/issues"
+  },
+  "homepage": "https://gitlab.com/ShooTeX/ESL-helper-extension#README",
+  "dependencies": {
+    "envy": "^1.0.0"
+  }
+}
