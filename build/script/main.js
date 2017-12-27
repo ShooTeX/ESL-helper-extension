@@ -23,6 +23,16 @@ function setCaretPosition(elemId, caretPos) {
 chrome.storage.local.get(['active'], function(data){
   if(data.active){
 
+    //database config
+    let dbconfig = {
+      apiKey: "AIzaSyB5QDdVvkFQjgQF9aY3A9swZUcu7Ucauzw",
+      authDomain: "webstore-esladminhelper.firebaseapp.com",
+      databaseURL: "https://webstore-esladminhelper.firebaseio.com",
+      projectId: "webstore-esladminhelper",
+      storageBucket: "webstore-esladminhelper.appspot.com",
+      messagingSenderId: "489794553651"
+    };
+
     //get Settings
     let notOnResponse
 
@@ -819,6 +829,8 @@ chrome.storage.local.get(['active'], function(data){
         }
 
         static addWarnings() {
+          //load material Icons
+
           //get object to append to
           var creator = $('td:contains(Creator) + td')
           var against = $('td:contains(Protest against) + td')
@@ -831,9 +843,21 @@ chrome.storage.local.get(['active'], function(data){
           let team2 = teamlink2.match(matching)[1]
 
           //check for warnings
+          firebase.initializeApp(dbconfig)
+          var warningdb = firebase.database().ref().once('value').then(function(data){
+            var warnings = data.val()
 
-          creator.append(team1)
-          against.append(" " + team2)
+            function findTeam2(row){
+              return row.Team == team2
+            }
+
+            if (warnings.findIndex(findTeam2) != -1){
+              var reason = warnings[warnings.findIndex(findTeam2)].Reason
+              if (reason == "moss"){
+                against.append(' MOSS')
+              }
+            }
+          })
         }
 
         static addSentences() {

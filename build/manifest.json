@@ -19,7 +19,7 @@
     {
       "matches": ["https://play.eslgaming.com/*"],
       "css": ["style/select2.min.css"],
-      "js": [ "script/MooTools-Core-1.6.0.js", "script/jquery-3.2.1.min.js", "script/jquery-ui.min.js","script/PageTitleNotification.min.js", "script/select2.min.js", "script/gmFunctions.js", "script/ESLminihelper.js", "script/main.js"],
+      "js": [ "script/MooTools-Core-1.6.0.js", "script/jquery-3.2.1.min.js", "script/jquery-ui.min.js", "script/firebase-app.js", "script/firebase-database.js", "script/PageTitleNotification.min.js", "script/select2.min.js", "script/gmFunctions.js", "script/ESLminihelper.js", "script/main.js"],
       "run_at":"document_end"
     }
   ],
