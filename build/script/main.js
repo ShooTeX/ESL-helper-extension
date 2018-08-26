@@ -795,7 +795,7 @@ chrome.storage.local.get(['active'], function(data){
 
             help.parent().html('<select id="adminList">'+ options +'</select>');
 
-            $.getJSON("https://spreadsheets.google.com/feeds/list/1ySB3NhUelKmwIIGxzQEcwcjVgeDoeXOpWt7P7Ki5H6Y/opznj7h/public/values?alt=json", function(data) {
+            $.getJSON("https://spreadsheets.google.com/feeds/list/1fSkzMvrvM8RX0ELuOMyyhEJ0J1869Awk_PMNhR6ze8Q/opznj7h/public/values?alt=json", function(data) {
                 $.each(data.feed.entry, function(key, value) {
                     $('#adminList')
                         .append('<option value="'+ value.gsx$id.$t +':'+adminSquad+'">'+ value.gsx$name.$t +' ('+ value.gsx$position.$t +')</option>');
@@ -836,7 +836,7 @@ chrome.storage.local.get(['active'], function(data){
             $('#defaultGroup').append(defaultOptions);
             $('select.defaultAnswerTexts[data-language=en]').prepend('<optgroup id="customGroup" label="Custom"></optgroup>');
 
-            $.getJSON("https://spreadsheets.google.com/feeds/list/1ySB3NhUelKmwIIGxzQEcwcjVgeDoeXOpWt7P7Ki5H6Y/od6/public/values?alt=json", function(data) {
+            $.getJSON("https://spreadsheets.google.com/feeds/list/1fSkzMvrvM8RX0ELuOMyyhEJ0J1869Awk_PMNhR6ze8Q/od6/public/values?alt=json", function(data) {
                 $.each(data.feed.entry, function(key, value) {
                     $('select.defaultAnswerTexts[data-language=en]').find('optgroup#customGroup')
                         .append($("<option></option>")
