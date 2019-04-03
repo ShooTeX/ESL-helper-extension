@@ -1,8 +1,8 @@
 let active,timer
 
-let protests =[{id: 0, title: "", duration: 0}]
+const spreadsheet = 'https://spreadsheets.google.com/feeds/list/1fSkzMvrvM8RX0ELuOMyyhEJ0J1869Awk_PMNhR6ze8Q/od6/public/values?alt=json'
 
-console.log(protests)
+let protests =[{id: 0, title: "", duration: 0}]
 
 let navNode = '/rainbowsix/europe-pc/'
 
@@ -117,6 +117,20 @@ chrome.extension.onMessage.addListener(
         if(request.msg == "notify"){
           addNotification(request.title,0,request.id,request.message)
         }
+        if (request.msg == 'customAnswers') {
+          // fetch(spreadsheet).then(response => sendResponse({data: response.json()}))
+          // fetch(spreadsheet).then(response => console.log(response.json()))
+          $.ajax({
+            url:spreadsheet,
+            datatype: 'jsonp',
+            success:function(data) {
+              console.log(data)
+
+              sendResponse({data})
+            },
+        });
+      }
+      return true
     }
 );
 

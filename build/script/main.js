@@ -835,18 +835,33 @@ chrome.storage.local.get(['active'], function(data){
             $('select.defaultAnswerTexts[data-language=en]').append('<optgroup label="Default" id="defaultGroup"></optgroup>');
             $('#defaultGroup').append(defaultOptions);
             $('select.defaultAnswerTexts[data-language=en]').prepend('<optgroup id="customGroup" label="Custom"></optgroup>');
+            
+                chrome.runtime.sendMessage({msg: 'customAnswers'}, data => {
+                    console.log(data)
+                        $.each(data.data.feed.entry, function(key, value) {
+                            $('select.defaultAnswerTexts[data-language=en]').find('optgroup#customGroup')
+                                .append($("<option></option>")
+                                        .attr('data-id', value.gsx$id.$t)
+                                        .attr('data-text', originalText.replace('\n\n\n', '\n\n'+ value.gsx$text.$t +'\n'))
+                                        .text(value.gsx$label.$t));
+                        });
+        
+                        $('select.defaultAnswerTexts[data-language=en]').val('Blank address');
+                })
 
-            $.getJSON("https://spreadsheets.google.com/feeds/list/1fSkzMvrvM8RX0ELuOMyyhEJ0J1869Awk_PMNhR6ze8Q/od6/public/values?alt=json", function(data) {
-                $.each(data.feed.entry, function(key, value) {
-                    $('select.defaultAnswerTexts[data-language=en]').find('optgroup#customGroup')
-                        .append($("<option></option>")
-                                .attr('data-id', value.gsx$id.$t)
-                                .attr('data-text', originalText.replace('\n\n\n', '\n\n'+ value.gsx$text.$t +'\n'))
-                                .text(value.gsx$label.$t));
-                });
 
-                $('select.defaultAnswerTexts[data-language=en]').val('Blank address');
-            });
+            
+            // $.getJSON(customAnswersJSON(), function(data) {
+            //     $.each(data.feed.entry, function(key, value) {
+            //         $('select.defaultAnswerTexts[data-language=en]').find('optgroup#customGroup')
+            //             .append($("<option></option>")
+            //                     .attr('data-id', value.gsx$id.$t)
+            //                     .attr('data-text', originalText.replace('\n\n\n', '\n\n'+ value.gsx$text.$t +'\n'))
+            //                     .text(value.gsx$label.$t));
+            //     });
+
+            //     $('select.defaultAnswerTexts[data-language=en]').val('Blank address');
+            // });
         }
     }
 
