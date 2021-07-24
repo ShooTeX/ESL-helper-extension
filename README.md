@@ -1,6 +1,9 @@
 # ESL Admin helper
 ## Making admin tasks easier and faster to do.
 
+### Wiki
+https://gitlab.com/ShooTeX/ESL-helper-extension/-/wikis/home
+
 ### Featues
 - Show ticket counter with and without admin assignment
 - Change NavNode
